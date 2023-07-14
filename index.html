@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitZone Gym</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #6DD5FA, #2980B9);
+      color: #fff;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    .jumbotron {
+      background: linear-gradient(135deg, #2980B9, #6DD5FA);
+      color: #fff;
+      text-align: center;
+      padding: 50px;
+      margin-bottom: 30px;
+      animation: scaleIn 0.8s ease-in-out both;
+    }
+
+    .jumbotron h1,
+    .jumbotron p {
+      color: #fff;
+    }
+
+    @keyframes scaleIn {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-in-out both;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .feature-icon {
+      flex: 0 0 50px;
+      height: 50px;
+      margin-right: 20px;
+      background-color: #fff;
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .signup-section {
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 20px;
+      margin-bottom: 30px;
+      animation: fadeIn 0.8s ease-in-out both;
+    }
+
+    .signup-section h2 {
+      margin-bottom: 20px;
+    }
+
+    .signup-form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .signup-form label {
+      color: #fff;
+    }
+
+    .signup-form .form-control {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: #fff;
+    }
+
+    .signup-form .btn-primary {
+      background-color: #fff;
+      color: #2980B9;
+      border-color: #fff;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .signup-form .btn-primary:hover {
+      background-color: #2980B9;
+      color: #fff;
+    }
+
+    .testimonial {
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 20px;
+      margin-bottom: 30px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .testimonial:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .testimonial p {
+      margin-bottom: 0;
+      color: #fff;
+    }
+
+    .testimonial-author {
+      margin-top: 10px;
+      text-align: right;
+      font-style: italic;
+      color: #fff;
+    }
+
+    .pricing-section {
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 20px;
+      margin-bottom: 30px;
+      animation: fadeIn 0.8s ease-in-out both;
+    }
+
+    .pricing-section h2 {
+      margin-bottom: 20px;
+    }
+
+    .pricing-table {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .pricing-table-header {
+      background-color: #fff;
+      color: #2980B9;
+      padding: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .pricing-table-price {
+      font-size: 2rem;
+      color: #fff;
+      padding: 10px;
+      background-color: #2980B9;
+      margin-bottom: 10px;
+    }
+
+    .pricing-table-features {
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+    }
+
+    .pricing-table-features ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .pricing-table-features ul li {
+      margin-bottom: 10px;
+    }
+
+    .modal-content {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      color: #000;
+      padding: 20px;
+    }
+
+    .modal-title {
+      margin-bottom: 20px;
+      color: #2980B9;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .modal-message {
+      margin-bottom: 20px;
+    }
+
+    .modal-close {
+      background-color: #2980B9;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .modal-close:hover {
+      background-color: #6DD5FA;
+    }
+  </style>
+</head>
+<body>
+  <div class="jumbotron">
+    <h1 class="display-4">Welcome to FitZone Gym</h1>
+    <p class="lead">Get fit and stay healthy at our state-of-the-art gym!</p>
+    <button type="button" class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#signupModal">Join Now</button>
+  </div>
+
+  <div class="container section">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>About Us</h2>
+        <p>FitZone Gym is dedicated to helping individuals achieve their fitness goals in a modern and friendly environment. Our gym is equipped with the latest equipment and offers a range of fitness classes and personal training services.</p>
+      </div>
+      <div class="col-md-6" id="signup">
+        <div class="signup-section">
+          <h2>Sign Up Now!</h2>
+          <form class="signup-form" action="#" method="post">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone</label>
+              <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container section">
+    <h2>Why Choose FitZone Gym?</h2>
+    <div class="feature">
+      <div class="feature-icon">
+        <i class="bi bi-people"></i>
+      </div>
+      <div>
+        <h4>Friendly Community</h4>
+        <p>Join a supportive and friendly community of fitness enthusiasts.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">
+        <i class="bi bi-clock"></i>
+      </div>
+      <div>
+        <h4>Flexible Hours</h4>
+        <p>Our gym is open early mornings, evenings, and weekends to fit your schedule.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">
+        <i class="bi bi-heart"></i>
+      </div>
+      <div>
+        <h4>Personalized Approach</h4>
+        <p>Receive personalized training programs tailored to your fitness goals.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container section">
+    <h2>Pricing</h2>
+    <div class="pricing-section">
+      <div class="pricing-table">
+        <div class="pricing-table-header">
+          <h3>Membership Plans</h3>
+        </div>
+        <div class="pricing-table-price">
+          <span>£30</span>
+          <span>for 12 months</span>
+        </div>
+        <div class="pricing-table-features">
+          <ul>
+            <li>Access to all facilities</li>
+            <li>Unlimited classes</li>
+            <li>Personal training sessions</li>
+            <li>Exclusive member events</li>
+          </ul>
+        </div>
+        <div class="pricing-table-price">
+          <span>£35</span>
+          <span>for 6 months</span>
+        </div>
+        <div class="pricing-table-features">
+          <ul>
+            <li>Access to all facilities</li>
+            <li>Unlimited classes</li>
+            <li>Personal training sessions</li>
+            <li>Exclusive member events</li>
+          </ul>
+        </div>
+        <div class="pricing-table-price">
+          <span>£20</span>
+          <span>for 1 month</span>
+        </div>
+        <div class="pricing-table-features">
+          <ul>
+            <li>Access to all facilities</li>
+            <li>Unlimited classes</li>
+            <li>Personal training sessions</li>
+            <li>Exclusive member events</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container section">
+    <h2>What Our Customers Say</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="testimonial">
+          <p>"FitZone Gym has been a game-changer for me. The trainers are knowledgeable and motivating, and the facilities are top-notch."</p>
+          <p class="testimonial-author">- Sarah D.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="testimonial">
+          <p>"I love the variety of classes at FitZone Gym. It keeps me motivated and makes my workouts enjoyable!"</p>
+          <p class="testimonial-author">- John P.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sign Up Confirmation Modal -->
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-title">
+          <h3>Sign Up Confirmation</h3>
+        </div>
+        <div class="modal-message">
+          <p>Thank you for signing up for FitZone Gym!</p>
+          <p>An email with confirmation and more information will be sent to your provided email address.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rest of the HTML code -->
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"></script>
+  <script>
+    document.querySelector('.signup-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      // Perform form submission logic or AJAX request to handle the sign-up process
+
+      // Show the sign-up confirmation modal
+      var modal = new bootstrap.Modal(document.getElementById('signupModal'));
+      modal.show();
+    });
+
+    var closeButtons = document.querySelectorAll('[data-bs-dismiss="modal"]');
+    closeButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var modal = bootstrap.Modal.getInstance(button.closest('.modal'));
+        modal.hide();
+      });
+    });
+  </script>
+</body>
+</html>
+
